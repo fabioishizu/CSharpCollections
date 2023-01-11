@@ -102,9 +102,14 @@ void TestaArrayContasCorrentes()
 
 #endregion
 
-ArrayList _listaDeContas = new ArrayList();
+List<ContaCorrente> _listaDeContas = new List<ContaCorrente>()
+{
+    new ContaCorrente(95) {Saldo=100},
+    new ContaCorrente(95) {Saldo=200},
+    new ContaCorrente(94) {Saldo=60}
+}; ;
 
-AtendimentoCliente();
+//AtendimentoCliente();
 
  void AtendimentoCliente()
 {
@@ -113,7 +118,7 @@ AtendimentoCliente();
     while (opcao != '6')
     {
         Console.Clear();
-        Console.WriteLine("===============================");
+        Console.WriteLine("==============================="); 
         Console.WriteLine("===       Atendimento       ===");
         Console.WriteLine("===1 - Cadastrar Conta      ===");
         Console.WriteLine("===2 - Listar Contas        ===");
@@ -195,6 +200,18 @@ void CadastrarConta()
     conta.Titular.Profissao = Console.ReadLine();
 
     _listaDeContas.Add(conta);
+
     Console.WriteLine("... Conta cadastrada com sucesso! ...");
     Console.ReadKey();
+}
+
+Generica<int> teste1 = new Generica<int>();
+teste1.MostrarMensagem(1);
+
+public class Generica<T>
+{
+    public void MostrarMensagem(T t)
+    {
+        Console.WriteLine($"Exibindo {t}");
+    }
 }
