@@ -195,6 +195,9 @@ AtendimentoCliente();
                 case '3':
                     RemoverContas();
                     break;
+                case '4':
+                    OrdenarContas();
+                    break;
                 default:
                     Console.WriteLine("Opcao não implementada.");
                     break;
@@ -206,6 +209,13 @@ AtendimentoCliente();
         Console.WriteLine($"{excecao.Message}");
     }
     
+}
+
+void OrdenarContas()
+{
+    _listaDeContas.Sort();
+    Console.WriteLine("... Lista de contas ordenada ...");
+    Console.ReadKey();
 }
 
 void RemoverContas()
