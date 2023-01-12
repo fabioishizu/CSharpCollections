@@ -1,4 +1,5 @@
 ﻿using bytebank.Modelos.Conta;
+using bytebank_ATENDIMENTO.bytebank.Exceptions;
 using bytebank_ATENDIMENTO.bytebank.Util;
 using System.Collections;
 
@@ -102,6 +103,50 @@ void TestaArrayContasCorrentes()
 
 #endregion
 
+#region Codigo de teste classe generica
+
+//Generica<int> teste1 = new Generica<int>();
+//teste1.MostrarMensagem(1);
+
+//public class Generica<T>
+//{
+//    public void MostrarMensagem(T t)
+//    {
+//        Console.WriteLine($"Exibindo {t}");
+//    }
+//}
+
+//List<ContaCorrente> _listaDeContas2 = new List<ContaCorrente>()
+//{
+//    new ContaCorrente(874),
+//    new ContaCorrente(874),
+//    new ContaCorrente(874)
+//};
+
+//List<ContaCorrente> _listaDeContas3 = new List<ContaCorrente>()
+//{
+//    new ContaCorrente(951),
+//    new ContaCorrente(321),
+//    new ContaCorrente(719)
+//};
+
+//_listaDeContas2.AddRange(_listaDeContas3);
+//_listaDeContas2.Reverse();
+
+//for (int i = 0; i < _listaDeContas2.Count; i++)
+//{
+//    Console.WriteLine($"Indice[{i}] = Conta [{_listaDeContas2[i].Conta}]");
+//}
+
+//Console.WriteLine("\n\n");
+//var range = _listaDeContas3.GetRange(0, 1);
+//for (int i = 0; i < range.Count; i++)
+//{
+//    Console.WriteLine($"Indice[{i}] = Conta [{range[i].Conta}]");
+//}
+
+#endregion
+
 List<ContaCorrente> _listaDeContas = new List<ContaCorrente>()
 {
     new ContaCorrente(95) {Saldo=100},
@@ -109,40 +154,55 @@ List<ContaCorrente> _listaDeContas = new List<ContaCorrente>()
     new ContaCorrente(94) {Saldo=60}
 }; ;
 
-//AtendimentoCliente();
+AtendimentoCliente();
 
  void AtendimentoCliente()
 {
-    char opcao = '0';
-
-    while (opcao != '6')
+    try
     {
-        Console.Clear();
-        Console.WriteLine("==============================="); 
-        Console.WriteLine("===       Atendimento       ===");
-        Console.WriteLine("===1 - Cadastrar Conta      ===");
-        Console.WriteLine("===2 - Listar Contas        ===");
-        Console.WriteLine("===3 - Remover Conta        ===");
-        Console.WriteLine("===4 - Ordenar Contas       ===");
-        Console.WriteLine("===5 - Pesquisar Conta      ===");
-        Console.WriteLine("===6 - Sair do Sistema      ===");
-        Console.WriteLine("===============================");
-        Console.WriteLine("\n\n");
-        Console.Write("Digite a opção desejada: ");
-        opcao = Console.ReadLine()[0];
-        switch (opcao)
+        char opcao = '0';
+        while(opcao != '6')
         {
-            case '1':
-                CadastrarConta();
-                break;
-            case '2':
-                ListarContas();
-                break;
-            default:
-                Console.WriteLine("Opcao não implementada.");
-                break;
+            Console.Clear();
+            Console.WriteLine("===============================");
+            Console.WriteLine("===       Atendimento       ===");
+            Console.WriteLine("===1 - Cadastrar Conta      ===");
+            Console.WriteLine("===2 - Listar Contas        ===");
+            Console.WriteLine("===3 - Remover Conta        ===");
+            Console.WriteLine("===4 - Ordenar Contas       ===");
+            Console.WriteLine("===5 - Pesquisar Conta      ===");
+            Console.WriteLine("===6 - Sair do Sistema      ===");
+            Console.WriteLine("===============================");
+            Console.WriteLine("\n\n");
+            Console.Write("Digite a opção desejada: ");
+            try
+            {
+                opcao = Console.ReadLine()[0];
+            }
+            catch (Exception excecao)
+            {
+                throw new ByteBankException(excecao.Message);
+            }
+            
+            switch (opcao)
+            {
+                case '1':
+                    CadastrarConta();
+                    break;
+                case '2':
+                    ListarContas();
+                    break;
+                default:
+                    Console.WriteLine("Opcao não implementada.");
+                    break;
+            }
         }
     }
+    catch(ByteBankException excecao)
+    {
+        Console.WriteLine($"{excecao.Message}");
+    }
+    
 }
 
 void ListarContas()
@@ -203,45 +263,5 @@ void CadastrarConta()
 
     Console.WriteLine("... Conta cadastrada com sucesso! ...");
     Console.ReadKey();
-}
-
-//Generica<int> teste1 = new Generica<int>();
-//teste1.MostrarMensagem(1);
-
-//public class Generica<T>
-//{
-//    public void MostrarMensagem(T t)
-//    {
-//        Console.WriteLine($"Exibindo {t}");
-//    }
-//}
- 
-List<ContaCorrente> _listaDeContas2 = new List<ContaCorrente>()
-{
-    new ContaCorrente(874),
-    new ContaCorrente(874),
-    new ContaCorrente(874)
-};
-
-List<ContaCorrente> _listaDeContas3 = new List<ContaCorrente>()
-{
-    new ContaCorrente(951),
-    new ContaCorrente(321),
-    new ContaCorrente(719)
-};
-
-_listaDeContas2.AddRange(_listaDeContas3);
-_listaDeContas2.Reverse();
-
-for (int i = 0; i < _listaDeContas2.Count; i++)
-{
-    Console.WriteLine($"Indice[{i}] = Conta [{_listaDeContas2[i].Conta}]");
-}
-
-Console.WriteLine("\n\n");
-var range = _listaDeContas3.GetRange(0, 1);
-for (int i = 0; i < range.Count; i++)
-{
-    Console.WriteLine($"Indice[{i}] = Conta [{range[i].Conta}]");
 }
 
