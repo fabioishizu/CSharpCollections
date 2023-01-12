@@ -205,13 +205,43 @@ void CadastrarConta()
     Console.ReadKey();
 }
 
-Generica<int> teste1 = new Generica<int>();
-teste1.MostrarMensagem(1);
+//Generica<int> teste1 = new Generica<int>();
+//teste1.MostrarMensagem(1);
 
-public class Generica<T>
+//public class Generica<T>
+//{
+//    public void MostrarMensagem(T t)
+//    {
+//        Console.WriteLine($"Exibindo {t}");
+//    }
+//}
+ 
+List<ContaCorrente> _listaDeContas2 = new List<ContaCorrente>()
 {
-    public void MostrarMensagem(T t)
-    {
-        Console.WriteLine($"Exibindo {t}");
-    }
+    new ContaCorrente(874),
+    new ContaCorrente(874),
+    new ContaCorrente(874)
+};
+
+List<ContaCorrente> _listaDeContas3 = new List<ContaCorrente>()
+{
+    new ContaCorrente(951),
+    new ContaCorrente(321),
+    new ContaCorrente(719)
+};
+
+_listaDeContas2.AddRange(_listaDeContas3);
+_listaDeContas2.Reverse();
+
+for (int i = 0; i < _listaDeContas2.Count; i++)
+{
+    Console.WriteLine($"Indice[{i}] = Conta [{_listaDeContas2[i].Conta}]");
 }
+
+Console.WriteLine("\n\n");
+var range = _listaDeContas3.GetRange(0, 1);
+for (int i = 0; i < range.Count; i++)
+{
+    Console.WriteLine($"Indice[{i}] = Conta [{range[i].Conta}]");
+}
+
