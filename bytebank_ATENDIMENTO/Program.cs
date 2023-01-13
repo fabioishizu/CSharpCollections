@@ -261,7 +261,15 @@ ContaCorrente ConsultaPorCPFTitular(string? cpf)
 
 ContaCorrente ConsultaPorNumeroConta(string? numeroConta)
 {
-    throw new NotImplementedException();
+    ContaCorrente conta = null;
+    for (int i = 0; i < _listaDeContas.Count; i++)
+    {
+        if (_listaDeContas[i].Conta.Equals(numeroConta))
+        {
+            conta = _listaDeContas[i];
+        }
+    }
+    return conta;
 }
 
 void OrdenarContas()
