@@ -248,7 +248,15 @@ void PesquisarContas()
 
 ContaCorrente ConsultaPorCPFTitular(string? cpf)
 {
-    throw new NotImplementedException();
+    ContaCorrente conta = null;
+    for (int i = 0; i < _listaDeContas.Count; i++)
+    {
+        if (_listaDeContas[i].Titular.Cpf.Equals(cpf))
+        {
+            conta = _listaDeContas[i];
+        }
+    }
+    return conta;
 }
 
 ContaCorrente ConsultaPorNumeroConta(string? numeroConta)
