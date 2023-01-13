@@ -198,6 +198,9 @@ AtendimentoCliente();
                 case '4':
                     OrdenarContas();
                     break;
+                case '5':
+                        PesquisarContas();
+                    break;
                 default:
                     Console.WriteLine("Opcao não implementada.");
                     break;
@@ -209,6 +212,48 @@ AtendimentoCliente();
         Console.WriteLine($"{excecao.Message}");
     }
     
+}
+
+void PesquisarContas()
+{
+    Console.Clear();
+    Console.WriteLine("===============================");
+    Console.WriteLine("===    PESQUISAR CONTAS     ===");
+    Console.WriteLine("===============================");
+    Console.WriteLine("\n");
+    Console.Write("Deseja pesquisar por (1) NUMERO DA CONTA ou (2)CPF TITULAR ? ");
+    switch (int.Parse(Console.ReadLine()))
+    {
+        case 1:
+            {
+                Console.Write("Informe o número da Conta: ");
+                string _numeroConta = Console.ReadLine();
+                ContaCorrente consultaConta = ConsultaPorNumeroConta(_numeroConta);
+                Console.ReadKey();
+                break;
+            }
+        case 2:
+            {
+                Console.Write("Informe o CPF do Titular: ");
+                string _cpf = Console.ReadLine();
+                ContaCorrente consultaCpf = ConsultaPorCPFTitular(_cpf);
+                Console.ReadKey();
+                break;
+            }
+        default:
+            Console.WriteLine("Opção não implementada.");
+            break;
+    }
+}
+
+ContaCorrente ConsultaPorCPFTitular(string? cpf)
+{
+    throw new NotImplementedException();
+}
+
+ContaCorrente ConsultaPorNumeroConta(string? numeroConta)
+{
+    throw new NotImplementedException();
 }
 
 void OrdenarContas()
