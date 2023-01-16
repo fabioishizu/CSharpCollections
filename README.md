@@ -8,6 +8,7 @@
 - Crie um projetos do tipo console usandos coleções e orientação a objetos
 
 ## Situação do curso:
-Início em Janeiro de 2023, em andamento :walking:
+Início em Janeiro de 2023 - Término em Janeiro de 2023
 
-## Certificado:
+## Link do certificado de conclusão:
+https://cursos.alura.com.br/certificate/c29cb415-e652-4a67-87c7-5d64ac4fd71e
